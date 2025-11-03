@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModMenus
 {
     public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(ForgeRegistries.MENU_TYPES, AestheticStorage.MOD_ID);
+            DeferredRegister.create(Registry.MENU.key(), AestheticStorage.MOD_ID);
 
     public static final RegistryObject<MenuType<CabinetMenu>> CABINET_MENU =
             MENUS.register("cabinet_menu", () -> IForgeMenuType.create(CabinetMenu::new));

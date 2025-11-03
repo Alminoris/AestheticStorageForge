@@ -1,7 +1,7 @@
 package net.alminoris.aestheticstorage.datagen;
 
 import net.alminoris.aestheticstorage.AestheticStorage;
-import net.minecraft.core.HolderLookup;
+
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.LootTableProvider;

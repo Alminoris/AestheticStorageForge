@@ -16,7 +16,7 @@ import java.util.List;
 public class ModBlockEntities
 {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, AestheticStorage.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, AestheticStorage.MOD_ID);
 
     public static final RegistryObject<BlockEntityType<CabinetBlockEntity>> CABINET_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("cabinet_be", () ->

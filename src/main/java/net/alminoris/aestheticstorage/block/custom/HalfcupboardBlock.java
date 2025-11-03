@@ -252,7 +252,7 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
             if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
                 BlockEntity blockEntity = level.getBlockEntity(pos);
                 if (blockEntity instanceof HalfcupboardBlockEntity cabinet) {
-                    NetworkHooks.openScreen(serverPlayer, cabinet, pos);
+                    NetworkHooks.openGui(serverPlayer, cabinet, pos);
                 }
             }
         }

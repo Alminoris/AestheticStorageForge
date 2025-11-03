@@ -178,7 +178,7 @@ public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                 if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
                     BlockEntity blockEntity = level.getBlockEntity(pos);
                     if (blockEntity instanceof CabinetBlockEntity cabinet) {
-                        NetworkHooks.openScreen(serverPlayer, cabinet, pos);
+                        NetworkHooks.openGui(serverPlayer, cabinet, pos);
                     }
                 }
             }

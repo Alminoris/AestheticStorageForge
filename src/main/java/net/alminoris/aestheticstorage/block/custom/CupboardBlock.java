@@ -230,7 +230,7 @@ public class CupboardBlock extends BaseEntityBlock implements SimpleWaterloggedB
             if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
                 BlockEntity blockEntity = level.getBlockEntity(pos);
                 if (blockEntity instanceof CupboardBlockEntity cabinet) {
-                    NetworkHooks.openScreen(serverPlayer, cabinet, pos);
+                    NetworkHooks.openGui(serverPlayer, cabinet, pos);
                 }
             }
         }

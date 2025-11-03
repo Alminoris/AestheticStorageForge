@@ -46,8 +46,6 @@ public class AestheticStorage
         ModMenus.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
-
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
