@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticstorage:halfcabinet_crimson"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

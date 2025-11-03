@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticstorage:halfcupboard_acacia"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

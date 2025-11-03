@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticstorage:halfcupboard_birch"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

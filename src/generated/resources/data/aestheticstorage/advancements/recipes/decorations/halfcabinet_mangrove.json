@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticstorage:halfcabinet_mangrove"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

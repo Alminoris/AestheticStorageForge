@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticstorage:halfcupboard_spruce"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
