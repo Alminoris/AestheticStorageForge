@@ -536,5 +536,5 @@
   "block.aestheticstorage.halfcupboard_wisteria_nss": "Petit armoire en glycine",
   "block.aestheticstorage.halfcupboard_yew": "Petit armoire en if",
   "item.aestheticstorage.wrench": "Clé à molette",
-  "itemgroup.astrgtab": "Aesthetic Storage"
+  "itemGroup.aestheticstorage.astrgtab": "Aesthetic Storage"
 }

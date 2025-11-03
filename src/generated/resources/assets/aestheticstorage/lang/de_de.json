@@ -536,5 +536,5 @@
   "block.aestheticstorage.halfcupboard_wisteria_nss": "Kleiner Schrank aus Glyzinie",
   "block.aestheticstorage.halfcupboard_yew": "Kleiner Schrank aus Eibe",
   "item.aestheticstorage.wrench": "Schraubenschlüssel",
-  "itemgroup.astrgtab": "Aesthetic Storage"
+  "itemGroup.aestheticstorage.astrgtab": "Aesthetic Storage"
 }

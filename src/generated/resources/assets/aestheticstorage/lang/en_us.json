@@ -1005,5 +1005,5 @@
   "block.aestheticstorage.zombie_head": "Zombie Head",
   "block.aestheticstorage.zombie_wall_head": "Zombie Wall Head",
   "item.aestheticstorage.wrench": "Wrench",
-  "itemgroup.astrgtab": "Aesthetic Storage"
+  "itemGroup.aestheticstorage.astrgtab": "Aesthetic Storage"
 }

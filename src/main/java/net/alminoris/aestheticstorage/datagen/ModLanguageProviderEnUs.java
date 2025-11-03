@@ -43,7 +43,7 @@ public class ModLanguageProviderEnUs extends LanguageProvider
 
         add("item." + AestheticStorage.MOD_ID + ".wrench","Wrench");
 
-        add("itemgroup.astrgtab","Aesthetic Storage");
+        add("itemGroup.aestheticstorage.astrgtab","Aesthetic Storage");
     }
 
     public static String movePrefix(String input, String[] arr)

@@ -134,6 +134,6 @@ public class ModLanguageProviderFrFr extends LanguageProvider
 
         add("item." + AestheticStorage.MOD_ID + ".wrench", "Clé à molette");
 
-        add("itemgroup.astrgtab","Aesthetic Storage");
+        add("itemGroup.aestheticstorage.astrgtab","Aesthetic Storage");
     }
 }

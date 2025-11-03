@@ -536,5 +536,5 @@
   "block.aestheticstorage.halfcupboard_wisteria_nss": "Pequeño armario de glicinia",
   "block.aestheticstorage.halfcupboard_yew": "Pequeño armario de tejo",
   "item.aestheticstorage.wrench": "Llave inglesa",
-  "itemgroup.astrgtab": "Aesthetic Storage"
+  "itemGroup.aestheticstorage.astrgtab": "Aesthetic Storage"
 }

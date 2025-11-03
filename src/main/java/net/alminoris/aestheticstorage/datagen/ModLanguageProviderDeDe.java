@@ -133,6 +133,6 @@ public class ModLanguageProviderDeDe extends LanguageProvider
 
         add("item." + AestheticStorage.MOD_ID + ".wrench", "Schraubenschlüssel");
 
-        add("itemgroup.astrgtab","Aesthetic Storage");
+        add("itemGroup.aestheticstorage.astrgtab","Aesthetic Storage");
     }
 }

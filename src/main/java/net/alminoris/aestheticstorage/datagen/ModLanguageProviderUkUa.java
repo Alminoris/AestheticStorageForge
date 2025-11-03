@@ -133,6 +133,6 @@ public class ModLanguageProviderUkUa extends LanguageProvider
 
         add("item." + AestheticStorage.MOD_ID + ".wrench","Гайковий ключ");
 
-        add("itemgroup.astrgtab","Aesthetic Storage");
+        add("itemGroup.aestheticstorage.astrgtab","Aesthetic Storage");
     }
 }

@@ -536,5 +536,5 @@
   "block.aestheticstorage.halfcupboard_wisteria_nss": "Малый шкаф из глицинии",
   "block.aestheticstorage.halfcupboard_yew": "Малый шкаф из тиса",
   "item.aestheticstorage.wrench": "Гаечный ключ",
-  "itemgroup.astrgtab": "Aesthetic Storage"
+  "itemGroup.aestheticstorage.astrgtab": "Aesthetic Storage"
 }

@@ -536,5 +536,5 @@
   "block.aestheticstorage.halfcupboard_wisteria_nss": "Мала шафа з гліцинії",
   "block.aestheticstorage.halfcupboard_yew": "Мала шафа з тису",
   "item.aestheticstorage.wrench": "Гайковий ключ",
-  "itemgroup.astrgtab": "Aesthetic Storage"
+  "itemGroup.aestheticstorage.astrgtab": "Aesthetic Storage"
 }

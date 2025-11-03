@@ -134,6 +134,6 @@ public class ModLanguageProviderRuRu extends LanguageProvider
 
         add("item." + AestheticStorage.MOD_ID + ".wrench", "Гаечный ключ");
 
-        add("itemgroup.astrgtab","Aesthetic Storage");
+        add("itemGroup.aestheticstorage.astrgtab","Aesthetic Storage");
     }
 }
