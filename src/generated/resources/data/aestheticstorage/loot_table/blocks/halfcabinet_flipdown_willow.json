@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aestheticstorage:halfcabinet_flipdown_willow"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aestheticstorage:blocks/halfcabinet_flipdown_willow"
+}
