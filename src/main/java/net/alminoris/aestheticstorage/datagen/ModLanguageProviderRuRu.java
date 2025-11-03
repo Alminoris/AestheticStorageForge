@@ -1,7 +1,7 @@
 package net.alminoris.aestheticstorage.datagen;
 
 import net.alminoris.aestheticstorage.AestheticStorage;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
 import java.util.LinkedHashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class ModLanguageProviderRuRu extends LanguageProvider
 {
-    public ModLanguageProviderRuRu(PackOutput output)
+    public ModLanguageProviderRuRu(DataGenerator output)
     {
         super(output, AestheticStorage.MOD_ID, "ru_ru");
     }

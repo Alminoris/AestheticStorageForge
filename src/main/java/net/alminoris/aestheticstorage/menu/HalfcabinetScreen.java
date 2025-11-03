@@ -10,11 +10,12 @@ import net.alminoris.aestheticstorage.block.entity.HalfcupboardBlockEntity;
 import net.alminoris.aestheticstorage.util.helper.BlockSetsHelper;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.core.registries.BuiltInRegistries;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Hashtable;
@@ -25,7 +26,7 @@ import static net.alminoris.aestheticstorage.util.helper.BlockSetsHelper.WOOD_CO
 
 public class HalfcabinetScreen extends AbstractContainerScreen<HalfcabinetMenu>
 {
-    private final String NAME = BuiltInRegistries.BLOCK.getKey(Objects.requireNonNull(menu.getSlot(0).container
+    private final String NAME = ForgeRegistries.BLOCKS.getKey(Objects.requireNonNull(menu.getSlot(0).container
             instanceof HalfcabinetBlockEntity be ? be.getLevel().getBlockState(be.getBlockPos()).getBlock() : null)).getPath();
     private final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(AestheticStorage.MOD_ID,
             "textures/gui/" + getWoodName() + "_half.png");

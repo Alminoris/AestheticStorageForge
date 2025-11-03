@@ -18,7 +18,7 @@ public class ModItems
             DeferredRegister.create(ForgeRegistries.ITEMS, AestheticStorage.MOD_ID);
 
     public static final RegistryObject<Item> WRENCH = registerItem("wrench",
-            () -> new TieredItem(Tiers.IRON, new Item.Properties().stacksTo(1)));
+            () -> new TieredItem(Tiers.IRON, new Item.Properties().stacksTo(1).tab(ModItemGroups.ASTRG_TAB)));
 
     private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item)
     {

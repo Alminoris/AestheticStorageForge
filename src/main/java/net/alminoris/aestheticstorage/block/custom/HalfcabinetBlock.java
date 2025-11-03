@@ -40,6 +40,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -173,7 +174,7 @@ public class HalfcabinetBlock extends BaseEntityBlock implements SimpleWaterlogg
     {
         if (!player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty())
         {
-            if (player.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(net.minecraft.core.registries.Registries.ITEM,
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(),
                     ResourceLocation.fromNamespaceAndPath("aestheticseating", "wrench"))))
             {
                 Variant variant = state.getValue(VARIANT);

@@ -1,14 +1,13 @@
 package net.alminoris.aestheticstorage.datagen;
 
 import net.alminoris.aestheticstorage.block.ModBlocks;
+import net.alminoris.aestheticstorage.item.ModItemGroups;
 import net.alminoris.aestheticstorage.item.ModItems;
 import net.alminoris.aestheticstorage.util.helper.BlockSetsHelper;
 import net.alminoris.aestheticstorage.util.helper.ModJsonHelper;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -16,6 +15,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -24,15 +24,15 @@ import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder
 {
-    public ModRecipeProvider(PackOutput pOutput)
+    public ModRecipeProvider(DataGenerator pOutput)
     {
         super(pOutput);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> recipeExporter)
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipeExporter)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.WRENCH.get(), 1)
+        ShapedRecipeBuilder.shaped(ModItems.WRENCH.get(), 1)
                 .pattern(" # ")
                 .pattern(" ##")
                 .pattern("/  ")
@@ -45,8 +45,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         for(String name : BlockSetsHelper.WOODS)
         {
             String blockName = (name.equals("crimson") || name.equals("warped")) ? "stem" : (name.equals("bamboo") ? "block" : "log");
-            Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.withDefaultNamespace("stripped_"+name+"_"+blockName));
-            Block block1 = BuiltInRegistries.BLOCK.get(ResourceLocation.withDefaultNamespace(name+"_"+blockName));
+            Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.withDefaultNamespace("stripped_"+name+"_"+blockName));
+            Block block1 = ForgeRegistries.BLOCKS.getValue(ResourceLocation.withDefaultNamespace(name+"_"+blockName));
             registerCabinet(recipeExporter, ModBlocks.CABINETS.get(name).get(), block1, block);
             registerCabinetFlipdown(recipeExporter, ModBlocks.FLIPDOWN_CABINETS.get(name).get(), block1, block);
             registerCabinetFlipup(recipeExporter, ModBlocks.FLIPUP_CABINETS.get(name).get(), block1, block);
@@ -58,7 +58,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             registerHalfCupboard(recipeExporter, ModBlocks.HALFCUPBOARDS.get(name).get(), block1, block);
         }
 
-        for(String name : BlockSetsHelper.EXTRA_WOODS_AN)
+        for(String name : ModItemGroups.AN_WOOD_NAMES)
         {
             ModJsonHelper.createShapedRecipe("cabinet_" + name, "4", "arborealnature:" + name + "_log", "arborealnature:stripped_" + name + "_log",
                     "\"/#\",", "\"/#\"", "");
@@ -85,7 +85,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     "\"#\",", "\"/\",", "\"#\"");
         }
 
-        for(String name : BlockSetsHelper.EXTRA_WOODS_WF)
+        for(String name : ModItemGroups.WF_WOOD_NAMES)
         {
             ModJsonHelper.createShapedRecipe("cabinet_" + name, "4", "wildfields:" + name + "_log", "wildfields:stripped_" + name + "_log",
                     "\"/#\",", "\"/#\"", "");
@@ -112,7 +112,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     "\"#\",", "\"/\",", "\"#\"");
         }
 
-        for(String name : BlockSetsHelper.WT_WOOD_NAMES)
+        for(String name : ModItemGroups.WT_WOOD_NAMES)
         {
             ModJsonHelper.createShapedRecipe("cabinet_" + name, "4", "whisperleaftrees:" + name + "_log", "whisperleaftrees:stripped_" + name + "_log",
                     "\"/#\",", "\"/#\"", "");
@@ -139,7 +139,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     "\"#\",", "\"/\",", "\"#\"");
         }
 
-        for(String name : BlockSetsHelper.ST_WOOD_NAMES)
+        for(String name : ModItemGroups.ST_WOOD_NAMES)
         {
             ModJsonHelper.createShapedRecipe("cabinet_" + name, "4", "silverwoodtrees:" + name + "_log", "silverwoodtrees:stripped_" + name + "_log",
                     "\"/#\",", "\"/#\"", "");
@@ -166,7 +166,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     "\"#\",", "\"/\",", "\"#\"");
         }
 
-        for(String name : BlockSetsHelper.MT_WOOD_NAMES)
+        for(String name : ModItemGroups.MT_WOOD_NAMES)
         {
             ModJsonHelper.createShapedRecipe("cabinet_" + name, "4", "missingtrees:" + name + "_log", "missingtrees:stripped_" + name + "_log",
                     "\"/#\",", "\"/#\"", "");
@@ -193,7 +193,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     "\"#\",", "\"/\",", "\"#\"");
         }
 
-        for(String name : BlockSetsHelper.NSS_WOOD_NAMES)
+        for(String name : ModItemGroups.NSS_WOOD_NAMES)
         {
             ModJsonHelper.createShapedRecipe("cabinet_" + name, "4", "natures_spirit:" + name.replace("_nss", "")
                             + "_log", "natures_spirit:stripped_" + name.replace("_nss", "") + "_log",
@@ -231,7 +231,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerHalfCabinet(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
+        ShapedRecipeBuilder.shaped(output, 3)
                 .pattern("/ ")
                 .pattern(" #")
                 .define('#', ing1)
@@ -243,7 +243,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerHalfCabinetFlipup(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
+        ShapedRecipeBuilder.shaped(output, 3)
                 .pattern("/")
                 .pattern("#")
                 .define('#', ing1)
@@ -255,7 +255,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerHalfCabinetFlipdown(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
+        ShapedRecipeBuilder.shaped(output, 3)
                 .pattern("#")
                 .pattern("/")
                 .define('#', ing1)
@@ -267,7 +267,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerHalfCupboard(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
+        ShapedRecipeBuilder.shaped(output, 3)
                 .pattern("#")
                 .pattern("/")
                 .pattern("#")
@@ -280,7 +280,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerCabinet(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
+        ShapedRecipeBuilder.shaped(output, 4)
                 .pattern("/#")
                 .pattern("/#")
                 .define('#', ing1)
@@ -292,7 +292,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerCabinetFlipup(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
+        ShapedRecipeBuilder.shaped(output, 4)
                 .pattern("//")
                 .pattern("##")
                 .define('#', ing1)
@@ -304,7 +304,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerCabinetFlipdown(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
+        ShapedRecipeBuilder.shaped(output, 4)
                 .pattern("##")
                 .pattern("//")
                 .define('#', ing1)
@@ -316,7 +316,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void registerCupboard(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
+        ShapedRecipeBuilder.shaped(output, 4)
                 .pattern("/#")
                 .pattern("/#")
                 .pattern("/#")

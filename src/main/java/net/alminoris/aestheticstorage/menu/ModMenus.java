@@ -1,17 +1,18 @@
 package net.alminoris.aestheticstorage.menu;
 
 import net.alminoris.aestheticstorage.AestheticStorage;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModMenus
 {
     public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(Registries.MENU, AestheticStorage.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.MENU_TYPES, AestheticStorage.MOD_ID);
 
     public static final RegistryObject<MenuType<CabinetMenu>> CABINET_MENU =
             MENUS.register("cabinet_menu", () -> IForgeMenuType.create(CabinetMenu::new));

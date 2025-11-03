@@ -2,10 +2,11 @@ package net.alminoris.aestheticstorage.datagen;
 
 import net.alminoris.aestheticstorage.AestheticStorage;
 import net.alminoris.aestheticstorage.block.ModBlocks;
+import net.alminoris.aestheticstorage.item.ModItemGroups;
 import net.alminoris.aestheticstorage.util.helper.BlockSetsHelper;
 import net.alminoris.aestheticstorage.util.helper.ModJsonHelper;
 import net.alminoris.aestheticstorage.util.helper.ModJsonTemplates;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -17,7 +18,7 @@ import java.util.Hashtable;
 
 public class ModBlockStateProvider extends BlockStateProvider
 {
-    public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper)
+    public ModBlockStateProvider(DataGenerator output, ExistingFileHelper exFileHelper)
     {
         super(output, AestheticStorage.MOD_ID, exFileHelper);
     }
@@ -47,7 +48,7 @@ public class ModBlockStateProvider extends BlockStateProvider
                     "minecraft:block/", "halfcupboard_"+name, "stripped_"+name+"_"+logName, name+"_"+logName);
         }
 
-        for(String name : BlockSetsHelper.EXTRA_WOODS_AN)
+        for(String name : ModItemGroups.AN_WOOD_NAMES)
         {
             registerCabinet( ModBlocks.CABINETS.get(name),
                     "aestheticstorage:block/", "cabinet_"+name, "stripped_"+name+"_log", name+"_log");
@@ -68,7 +69,7 @@ public class ModBlockStateProvider extends BlockStateProvider
                     "aestheticstorage:block/", "halfcupboard_"+name, "stripped_"+name+"_log", name+"_log");
         }
 
-        for(String name : BlockSetsHelper.EXTRA_WOODS_WF)
+        for(String name : ModItemGroups.WF_WOOD_NAMES)
         {
             registerCabinet(ModBlocks.CABINETS.get(name), "aestheticstorage:block/", "cabinet_"+name, "stripped_"+name+"_log", name+"_log");
             registerCabinetFlipup( ModBlocks.FLIPUP_CABINETS.get(name),"aestheticstorage:block/", "cabinet_flipup_"+name, "stripped_"+name+"_log", name+"_log");
@@ -85,7 +86,7 @@ public class ModBlockStateProvider extends BlockStateProvider
                     "aestheticstorage:block/", "halfcupboard_"+name, "stripped_"+name+"_log", name+"_log");
         }
 
-        for(String name : BlockSetsHelper.WT_WOOD_NAMES)
+        for(String name : ModItemGroups.WT_WOOD_NAMES)
         {
             registerCabinet(ModBlocks.CABINETS.get(name), "aestheticstorage:block/", "cabinet_"+name, "stripped_"+name+"_log", name+"_log");
             registerCabinetFlipup( ModBlocks.FLIPUP_CABINETS.get(name),"aestheticstorage:block/", "cabinet_flipup_"+name, "stripped_"+name+"_log", name+"_log");
@@ -102,7 +103,7 @@ public class ModBlockStateProvider extends BlockStateProvider
                     "aestheticstorage:block/", "halfcupboard_"+name, "stripped_"+name+"_log", name+"_log");
         }
 
-        for(String name : BlockSetsHelper.ST_WOOD_NAMES)
+        for(String name : ModItemGroups.ST_WOOD_NAMES)
         {
             registerCabinet(ModBlocks.CABINETS.get(name), "aestheticstorage:block/", "cabinet_"+name, "stripped_"+name+"_log", name+"_log");
             registerCabinetFlipup( ModBlocks.FLIPUP_CABINETS.get(name),"aestheticstorage:block/", "cabinet_flipup_"+name, "stripped_"+name+"_log", name+"_log");
@@ -119,7 +120,7 @@ public class ModBlockStateProvider extends BlockStateProvider
                     "aestheticstorage:block/", "halfcupboard_"+name, "stripped_"+name+"_log", name+"_log");
         }
 
-        for(String name : BlockSetsHelper.MT_WOOD_NAMES)
+        for(String name : ModItemGroups.MT_WOOD_NAMES)
         {
             registerCabinet(ModBlocks.CABINETS.get(name), "aestheticstorage:block/", "cabinet_"+name, "stripped_"+name+"_log", name+"_log");
             registerCabinetFlipup( ModBlocks.FLIPUP_CABINETS.get(name),"aestheticstorage:block/", "cabinet_flipup_"+name, "stripped_"+name+"_log", name+"_log");
@@ -136,7 +137,7 @@ public class ModBlockStateProvider extends BlockStateProvider
                     "aestheticstorage:block/", "halfcupboard_"+name, "stripped_"+name+"_log", name+"_log");
         }
 
-        for(String name : BlockSetsHelper.NSS_WOOD_NAMES)
+        for(String name : ModItemGroups.NSS_WOOD_NAMES)
         {
             registerCabinet(ModBlocks.CABINETS.get(name), "aestheticstorage:block/", "cabinet_"+name, "stripped_"+name+"_log", name+"_log");
             registerCabinetFlipup( ModBlocks.FLIPUP_CABINETS.get(name),"aestheticstorage:block/", "cabinet_flipup_"+name, "stripped_"+name+"_log", name+"_log");

@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.registries.BuiltInRegistries;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.ContainerHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class CabinetBlockEntity extends BlockEntity implements MenuProvider, Imp
     public void tick(Level level, BlockPos pos, BlockState state)
     {
         if (level.isClientSide) return;
-        this.name = BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath();
+        this.name = ForgeRegistries.BLOCKS.getKey(state.getBlock()).getPath();
     }
 
     @Override

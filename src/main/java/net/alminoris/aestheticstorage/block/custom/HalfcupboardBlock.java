@@ -41,6 +41,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -209,7 +210,7 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
 
         if (!held.isEmpty())
         {
-            if (held.is(TagKey.create(net.minecraft.core.registries.Registries.ITEM,
+            if (held.is(TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(),
                     ResourceLocation.fromNamespaceAndPath("aestheticseating", "wrench"))))
             {
                 boolean newFlipped = !state.getValue(FLIPPED);

@@ -32,6 +32,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
@@ -144,7 +145,7 @@ public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     {
         if (!player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty())
         {
-            if (player.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(net.minecraft.core.registries.Registries.ITEM,
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(),
                     ResourceLocation.fromNamespaceAndPath("aestheticseating", "wrench"))))
             {
                 Variant variant = state.getValue(VARIANT);

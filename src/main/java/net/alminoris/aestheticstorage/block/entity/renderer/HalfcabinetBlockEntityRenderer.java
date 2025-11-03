@@ -1,19 +1,19 @@
 package net.alminoris.aestheticstorage.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.alminoris.aestheticstorage.block.custom.HalfcabinetBlock;
 import net.alminoris.aestheticstorage.block.entity.HalfcabinetBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
@@ -41,10 +41,10 @@ public class HalfcabinetBlockEntityRenderer implements BlockEntityRenderer<Halfc
         poseStack.translate(0.5, 0.5, 0.5);
         switch (facing)
         {
-            case NORTH -> poseStack.mulPose(Axis.YP.rotationDegrees(0f));
-            case SOUTH -> poseStack.mulPose(Axis.YP.rotationDegrees(180F));
-            case WEST  -> poseStack.mulPose(Axis.YP.rotationDegrees(90F));
-            case EAST  -> poseStack.mulPose(Axis.YP.rotationDegrees(-90f));
+            case NORTH -> poseStack.mulPose(Vector3f.YP.rotationDegrees(0f));
+            case SOUTH -> poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
+            case WEST  -> poseStack.mulPose(Vector3f.YP.rotationDegrees(90F));
+            case EAST  -> poseStack.mulPose(Vector3f.YP.rotationDegrees(-90f));
         }
         poseStack.translate(-0.5, -0.5, -0.5);
 
@@ -65,12 +65,11 @@ public class HalfcabinetBlockEntityRenderer implements BlockEntityRenderer<Halfc
 
             itemRenderer.renderStatic(
                     stack,
-                    ItemDisplayContext.GUI,
+                    ItemTransforms.TransformType.GUI,
                     getLightLevel(entity.getLevel(), entity.getBlockPos()),
                     OverlayTexture.NO_OVERLAY,
                     poseStack,
                     bufferSource,
-                    entity.getLevel(),
                     0
             );
 
