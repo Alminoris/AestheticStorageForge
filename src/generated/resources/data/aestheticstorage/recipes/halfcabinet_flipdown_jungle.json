@@ -1,5 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "/"
+  ],
   "key": {
     "#": {
       "item": "minecraft:jungle_log"
@@ -8,12 +12,8 @@
       "item": "minecraft:stripped_jungle_log"
     }
   },
-  "pattern": [
-    "#",
-    "/"
-  ],
   "result": {
-    "count": 3,
-    "item": "aestheticstorage:halfcabinet_flipdown_jungle"
+    "item": "aestheticstorage:halfcabinet_flipdown_jungle",
+    "count": 3
   }
 }
