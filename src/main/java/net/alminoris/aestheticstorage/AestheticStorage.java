@@ -33,9 +33,9 @@ public class AestheticStorage
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
-    public AestheticStorage(FMLJavaModLoadingContext context)
+    public AestheticStorage()
     {
-        IEventBus modEventBus = context.getModEventBus();
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
 
