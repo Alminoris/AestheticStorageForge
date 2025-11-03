@@ -29,7 +29,7 @@ public class CupboardMenu extends AbstractContainerMenu {
     {
         super(ModMenus.CUPBOARD_MENU.get(), containerId);
         this.blockEntity = blockEntity;
-        this.access = ContainerLevelAccess.create(playerInventory.player.level(), blockEntity.getBlockPos());
+        this.access = ContainerLevelAccess.create(playerInventory.player.getLevel(), blockEntity.getBlockPos());
 
         // 8-slot cabinet (2 rows x 4 columns)
         for (int i = 0; i < 4; i++) {
@@ -45,7 +45,7 @@ public class CupboardMenu extends AbstractContainerMenu {
     // Client-side constructor (Forge syncs BlockPos automatically)
     public CupboardMenu(int containerId, Inventory playerInventory, FriendlyByteBuf friendlyByteBuf)
     {
-        this(containerId, playerInventory, (CupboardBlockEntity) playerInventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
+        this(containerId, playerInventory, (CupboardBlockEntity) playerInventory.player.getLevel().getBlockEntity(friendlyByteBuf.readBlockPos()));
     }
 
     @Override
@@ -58,9 +58,9 @@ public class CupboardMenu extends AbstractContainerMenu {
     {
         super.removed(player);
 
-        if (player.level().isClientSide) return;
+        if (player.getLevel().isClientSide) return;
 
-        Level world = player.level();
+        Level world = player.getLevel();
         BlockPos startPos = blockEntity.getBlockPos();
         BlockState startState = world.getBlockState(startPos);
 

@@ -23,7 +23,7 @@ public class CabinetMenu extends AbstractContainerMenu {
     {
         super(ModMenus.CABINET_MENU.get(), containerId);
         this.blockEntity = blockEntity;
-        this.access = ContainerLevelAccess.create(playerInventory.player.level(), blockEntity.getBlockPos());
+        this.access = ContainerLevelAccess.create(playerInventory.player.getLevel(), blockEntity.getBlockPos());
 
         // 8-slot cabinet (2 rows x 4 columns)
         for (int i = 0; i < 4; i++) {
@@ -39,7 +39,7 @@ public class CabinetMenu extends AbstractContainerMenu {
     // Client-side constructor (Forge syncs BlockPos automatically)
     public CabinetMenu(int containerId, Inventory playerInventory, FriendlyByteBuf friendlyByteBuf)
     {
-        this(containerId, playerInventory, (CabinetBlockEntity) playerInventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
+        this(containerId, playerInventory, (CabinetBlockEntity) playerInventory.player.getLevel().getBlockEntity(friendlyByteBuf.readBlockPos()));
     }
 
     @Override
@@ -50,10 +50,10 @@ public class CabinetMenu extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
-        if (!player.level().isClientSide) {
-            BlockState state = player.level().getBlockState(blockEntity.getBlockPos());
+        if (!player.getLevel().isClientSide) {
+            BlockState state = player.getLevel().getBlockState(blockEntity.getBlockPos());
             if (state.hasProperty(CabinetBlock.OPEN)) {
-                player.level().setBlock(blockEntity.getBlockPos(), state.setValue(CabinetBlock.OPEN, false), 3);
+                player.getLevel().setBlock(blockEntity.getBlockPos(), state.setValue(CabinetBlock.OPEN, false), 3);
             }
         }
     }

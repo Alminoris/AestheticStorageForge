@@ -28,7 +28,7 @@ public class HalfcupboardMenu extends AbstractContainerMenu {
     {
         super(ModMenus.HALFCUPBOARD_MENU.get(), containerId);
         this.blockEntity = blockEntity;
-        this.access = ContainerLevelAccess.create(playerInventory.player.level(), blockEntity.getBlockPos());
+        this.access = ContainerLevelAccess.create(playerInventory.player.getLevel(), blockEntity.getBlockPos());
 
         int l = 0;
         for (int i = 1; i < 3; i++) {
@@ -44,7 +44,7 @@ public class HalfcupboardMenu extends AbstractContainerMenu {
     // Client-side constructor (Forge syncs BlockPos automatically)
     public HalfcupboardMenu(int containerId, Inventory playerInventory, FriendlyByteBuf friendlyByteBuf)
     {
-        this(containerId, playerInventory, (HalfcupboardBlockEntity) playerInventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
+        this(containerId, playerInventory, (HalfcupboardBlockEntity) playerInventory.player.getLevel().getBlockEntity(friendlyByteBuf.readBlockPos()));
     }
 
     @Override
@@ -57,9 +57,9 @@ public class HalfcupboardMenu extends AbstractContainerMenu {
     {
         super.removed(player);
 
-        if (player.level().isClientSide) return;
+        if (player.getLevel().isClientSide) return;
 
-        Level world = player.level();
+        Level world = player.getLevel();
         BlockPos startPos = blockEntity.getBlockPos();
         BlockState startState = world.getBlockState(startPos);
 

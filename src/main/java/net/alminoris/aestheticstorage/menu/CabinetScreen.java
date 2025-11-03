@@ -1,12 +1,11 @@
 package net.alminoris.aestheticstorage.menu;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.alminoris.aestheticstorage.AestheticStorage;
 import net.alminoris.aestheticstorage.block.ModBlocks;
 import net.alminoris.aestheticstorage.block.entity.CabinetBlockEntity;
-import net.alminoris.aestheticstorage.menu.CabinetMenu;
 import net.alminoris.aestheticstorage.util.helper.BlockSetsHelper;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -73,7 +72,7 @@ public class CabinetScreen extends AbstractContainerScreen<CabinetMenu>
     }
 
     @Override
-    protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+    protected void renderLabels(PoseStack graphics, int mouseX, int mouseY) {
         int color = 0xFFFFFF;
         for (String name : BlockSetsHelper.getWoods()) {
             if (NAME.endsWith("_" + name)) {
@@ -81,12 +80,12 @@ public class CabinetScreen extends AbstractContainerScreen<CabinetMenu>
             }
         }
 
-        graphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, color, false);
-        graphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, color, false);
+        drawString(graphics, this.font, this.title, this.titleLabelX, this.titleLabelY, color);
+        drawString(graphics, this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, color);
     }
 
     @Override
-    protected void renderBg(GuiGraphics graphics, float partialTicks, int mouseX, int mouseY) {
+    protected void renderBg(PoseStack graphics, float partialTicks, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         RenderSystem.setShaderTexture(0, TEXTURE);
@@ -94,11 +93,11 @@ public class CabinetScreen extends AbstractContainerScreen<CabinetMenu>
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        graphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
+        blit(graphics, x, y, 0, 0, imageWidth, imageHeight);
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
+    public void render(PoseStack graphics, int mouseX, int mouseY, float partialTicks) {
         renderBackground(graphics);
         super.render(graphics, mouseX, mouseY, partialTicks);
         renderTooltip(graphics, mouseX, mouseY);

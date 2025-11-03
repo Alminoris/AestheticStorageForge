@@ -21,7 +21,7 @@ public class HalfcabinetMenu extends AbstractContainerMenu {
     {
         super(ModMenus.HALFCABINET_MENU.get(), containerId);
         this.blockEntity = blockEntity;
-        this.access = ContainerLevelAccess.create(playerInventory.player.level(), blockEntity.getBlockPos());
+        this.access = ContainerLevelAccess.create(playerInventory.player.getLevel(), blockEntity.getBlockPos());
 
         int l = 0;
         for (int i = 1; i < 3; i++) {
@@ -37,7 +37,7 @@ public class HalfcabinetMenu extends AbstractContainerMenu {
     // Client-side constructor (Forge syncs BlockPos automatically)
     public HalfcabinetMenu(int containerId, Inventory playerInventory, FriendlyByteBuf friendlyByteBuf)
     {
-        this(containerId, playerInventory, (HalfcabinetBlockEntity) playerInventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
+        this(containerId, playerInventory, (HalfcabinetBlockEntity) playerInventory.player.getLevel().getBlockEntity(friendlyByteBuf.readBlockPos()));
     }
 
     @Override
@@ -48,10 +48,10 @@ public class HalfcabinetMenu extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
-        if (!player.level().isClientSide) {
-            BlockState state = player.level().getBlockState(blockEntity.getBlockPos());
+        if (!player.getLevel().isClientSide) {
+            BlockState state = player.getLevel().getBlockState(blockEntity.getBlockPos());
             if (state.hasProperty(HalfcabinetBlock.OPEN)) {
-                player.level().setBlock(blockEntity.getBlockPos(), state.setValue(HalfcabinetBlock.OPEN, false), 3);
+                player.getLevel().setBlock(blockEntity.getBlockPos(), state.setValue(HalfcabinetBlock.OPEN, false), 3);
             }
         }
     }
