@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
@@ -172,14 +173,12 @@ public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             Variant variant = state.getValue(VARIANT);
             Direction facing = state.getValue(FACING);
 
-            if (open)
-            {
-                BlockEntity blockEntity = level.getBlockEntity(pos);
-                if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
-                {
-                    serverPlayer.openMenu(new SimpleMenuProvider(
-                            (containerId, inventory, pl) -> new CabinetMenu(containerId, inventory, (CabinetBlockEntity) blockEntity),
-                            state.getBlock().getName()));
+            if (open) {
+                if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+                    BlockEntity blockEntity = level.getBlockEntity(pos);
+                    if (blockEntity instanceof CabinetBlockEntity cabinet) {
+                        NetworkHooks.openScreen(serverPlayer, cabinet, pos);
+                    }
                 }
             }
 

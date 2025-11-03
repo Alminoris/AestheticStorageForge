@@ -107,10 +107,8 @@ public class HalfcabinetBlockEntity extends BlockEntity implements MenuProvider,
     }
 
     @Override
-    public Component getDisplayName()
-    {
-        String id = (name != null) ? name : "halfcabinet";
-        return Component.translatable("block.aestheticstorage." + id);
+    public Component getDisplayName() {
+        return getBlockState().getBlock().getName();
     }
 
     @Nullable

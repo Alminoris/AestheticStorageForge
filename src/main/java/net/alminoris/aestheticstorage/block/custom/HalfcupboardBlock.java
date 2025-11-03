@@ -1,6 +1,7 @@
 package net.alminoris.aestheticstorage.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.alminoris.aestheticstorage.block.entity.CabinetBlockEntity;
 import net.alminoris.aestheticstorage.block.entity.HalfcabinetBlockEntity;
 import net.alminoris.aestheticstorage.block.entity.HalfcupboardBlockEntity;
 import net.alminoris.aestheticstorage.block.entity.ModBlockEntities;
@@ -39,6 +40,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -245,14 +247,12 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
 
         boolean currentOpen = state.getValue(OPEN);
 
-        if (currentOpen)
-        {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
-            {
-                serverPlayer.openMenu(new SimpleMenuProvider(
-                        (containerId, inventory, pl) -> new HalfcupboardMenu(containerId, inventory, (HalfcupboardBlockEntity) blockEntity),
-                        state.getBlock().getName()));
+        if (currentOpen) {
+            if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof HalfcupboardBlockEntity cabinet) {
+                    NetworkHooks.openScreen(serverPlayer, cabinet, pos);
+                }
             }
         }
 

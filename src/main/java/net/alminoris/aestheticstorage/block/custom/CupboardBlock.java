@@ -31,6 +31,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 import java.util.*;
@@ -224,15 +225,12 @@ public class CupboardBlock extends BaseEntityBlock implements SimpleWaterloggedB
 
         boolean currentOpen = state.getValue(OPEN);
 
-        if (currentOpen)
-        {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
-            {
-                BlockPos poss = blockEntity.getBlockPos();
-                serverPlayer.openMenu(new SimpleMenuProvider(
-                        (containerId, inventory, pl) -> new CupboardMenu(containerId, inventory, (CupboardBlockEntity) blockEntity),
-                        state.getBlock().getName()));
+        if (currentOpen) {
+            if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof CupboardBlockEntity cabinet) {
+                    NetworkHooks.openScreen(serverPlayer, cabinet, pos);
+                }
             }
         }
 

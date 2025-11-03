@@ -108,10 +108,8 @@ public class CupboardBlockEntity extends BlockEntity implements MenuProvider, Im
     }
 
     @Override
-    public Component getDisplayName()
-    {
-        String id = (name != null) ? name : "cupboard";
-        return Component.translatable("block.aestheticstorage." + id);
+    public Component getDisplayName() {
+        return getBlockState().getBlock().getName();
     }
 
     @Nullable

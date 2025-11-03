@@ -1,6 +1,7 @@
 package net.alminoris.aestheticstorage.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.alminoris.aestheticstorage.block.entity.CabinetBlockEntity;
 import net.alminoris.aestheticstorage.block.entity.CupboardBlockEntity;
 import net.alminoris.aestheticstorage.block.entity.HalfcabinetBlockEntity;
 import net.alminoris.aestheticstorage.block.entity.ModBlockEntities;
@@ -38,6 +39,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -202,14 +204,12 @@ public class HalfcabinetBlock extends BaseEntityBlock implements SimpleWaterlogg
 
             MenuProvider provider = (MenuProvider) level.getBlockEntity(pos);
 
-            if (open)
-            {
-                BlockEntity blockEntity = level.getBlockEntity(pos);
-                if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
-                {
-                    serverPlayer.openMenu(new SimpleMenuProvider(
-                            (containerId, inventory, pl) -> new HalfcabinetMenu(containerId, inventory, (HalfcabinetBlockEntity) blockEntity),
-                            state.getBlock().getName()));
+            if (open) {
+                if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+                    BlockEntity blockEntity = level.getBlockEntity(pos);
+                    if (blockEntity instanceof HalfcabinetBlockEntity cabinet) {
+                        NetworkHooks.openScreen(serverPlayer, cabinet, pos);
+                    }
                 }
             }
 

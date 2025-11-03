@@ -111,16 +111,14 @@ public class CabinetBlockEntity extends BlockEntity implements MenuProvider, Imp
         return saveWithoutMetadata();
     }
 
-    @Override
-    public Component getDisplayName()
-    {
-        String id = (name != null) ? name : "cabinet";
-        return Component.translatable("block.aestheticstorage." + id);
-    }
-
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
         return new CabinetMenu(containerId, playerInventory, this);
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return getBlockState().getBlock().getName();
     }
 }
