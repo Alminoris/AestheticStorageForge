@@ -91,7 +91,7 @@ public class HalfcabinetBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     @Override
-    protected VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_)
+    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_)
     {
         return getRotatedShape(p_60555_);
     }
@@ -100,18 +100,6 @@ public class HalfcabinetBlock extends BaseEntityBlock implements SimpleWaterlogg
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
         builder.add(FACING, VARIANT, OPEN, WATERLOGGED);
-    }
-
-    public static final MapCodec<HalfcabinetBlock> CODEC_WITH_FLIP =
-            simpleCodec(properties -> new HalfcabinetBlock(properties, true));
-
-    public static final MapCodec<HalfcabinetBlock> CODEC_WITHOUT_FLIP =
-            simpleCodec(properties -> new HalfcabinetBlock(properties, false));
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec()
-    {
-        return HAS_FLIP ? CODEC_WITH_FLIP : CODEC_WITHOUT_FLIP;
     }
 
     @Override
@@ -178,8 +166,8 @@ public class HalfcabinetBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
-                                 Player player, BlockHitResult hit)
+    public InteractionResult use(BlockState state, Level level, BlockPos pos,
+                                 Player player, InteractionHand hand, BlockHitResult hit)
     {
         if (!player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty())
         {
@@ -219,11 +207,9 @@ public class HalfcabinetBlock extends BaseEntityBlock implements SimpleWaterlogg
                 BlockEntity blockEntity = level.getBlockEntity(pos);
                 if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
                 {
-                    BlockPos poss = blockEntity.getBlockPos();
                     serverPlayer.openMenu(new SimpleMenuProvider(
                             (containerId, inventory, pl) -> new HalfcabinetMenu(containerId, inventory, (HalfcabinetBlockEntity) blockEntity),
-                            state.getBlock().getName()
-                    ), poss);
+                            state.getBlock().getName()));
                 }
             }
 

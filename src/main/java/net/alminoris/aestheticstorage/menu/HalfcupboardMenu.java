@@ -73,7 +73,7 @@ public class HalfcupboardMenu extends AbstractContainerMenu {
 
         while (!stack.isEmpty())
         {
-            BlockPos currentPos = stack.removeLast();
+            BlockPos currentPos = stack.remove(stack.size()-1);
             if (!visited.add(currentPos)) continue;
 
             BlockState currentState = world.getBlockState(currentPos);

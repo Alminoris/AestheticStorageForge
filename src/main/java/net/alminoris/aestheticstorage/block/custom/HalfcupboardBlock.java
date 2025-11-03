@@ -86,14 +86,6 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
                 .setValue(WATERLOGGED, false));
     }
 
-    public static final MapCodec<HalfcupboardBlock> CODEC = simpleCodec(HalfcupboardBlock::new);
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec()
-    {
-        return CODEC;
-    }
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
@@ -107,13 +99,13 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
     }
 
     @Override
-    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx)
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx)
     {
         return getRotatedShape(state);
     }
 
     @Override
-    protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx)
+    public VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx)
     {
         return getRotatedShape(state);
     }
@@ -209,7 +201,7 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
     }
 
     @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit)
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
     {
         ItemStack held = player.getItemInHand(InteractionHand.MAIN_HAND);
 
@@ -227,7 +219,7 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
 
                 while (!stack.isEmpty())
                 {
-                    BlockPos current = stack.removeLast();
+                    BlockPos current = stack.remove(stack.size()-1);
                     if (!visited.add(current)) continue;
 
                     BlockState currentState = level.getBlockState(current);
@@ -258,11 +250,9 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
             {
-                BlockPos poss = blockEntity.getBlockPos();
                 serverPlayer.openMenu(new SimpleMenuProvider(
                         (containerId, inventory, pl) -> new HalfcupboardMenu(containerId, inventory, (HalfcupboardBlockEntity) blockEntity),
-                        state.getBlock().getName()
-                ), poss);
+                        state.getBlock().getName()));
             }
         }
 
@@ -275,7 +265,7 @@ public class HalfcupboardBlock extends BaseEntityBlock implements SimpleWaterlog
 
         while (!stack.isEmpty())
         {
-            BlockPos current = stack.removeLast();
+            BlockPos current = stack.remove(stack.size()-1);
             if (!visited.add(current)) continue;
 
             BlockState currentState = level.getBlockState(current);

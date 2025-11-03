@@ -74,18 +74,6 @@ public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         builder.add(FACING, VARIANT, OPEN, WATERLOGGED);
     }
 
-    public static final MapCodec<CabinetBlock> CODEC_WITH_FLIP =
-            simpleCodec(properties -> new CabinetBlock(properties, true));
-
-    public static final MapCodec<CabinetBlock> CODEC_WITHOUT_FLIP =
-            simpleCodec(properties -> new CabinetBlock(properties, false));
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec()
-    {
-        return HAS_FLIP ? CODEC_WITH_FLIP : CODEC_WITHOUT_FLIP;
-    }
-
     @Override
     public RenderShape getRenderShape(BlockState state)
     {
@@ -150,8 +138,8 @@ public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     }
 
     @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
-                                 Player player, BlockHitResult hit)
+    public InteractionResult use(BlockState state, Level level, BlockPos pos,
+                                 Player player, InteractionHand hand, BlockHitResult hit)
     {
         if (!player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty())
         {
@@ -189,11 +177,9 @@ public class CabinetBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                 BlockEntity blockEntity = level.getBlockEntity(pos);
                 if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
                 {
-                    BlockPos poss = blockEntity.getBlockPos();
                     serverPlayer.openMenu(new SimpleMenuProvider(
                             (containerId, inventory, pl) -> new CabinetMenu(containerId, inventory, (CabinetBlockEntity) blockEntity),
-                            state.getBlock().getName()
-                    ), poss);
+                            state.getBlock().getName()));
                 }
             }
 

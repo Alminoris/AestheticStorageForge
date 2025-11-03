@@ -7,8 +7,8 @@ import net.alminoris.aestheticstorage.util.helper.ModJsonHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -20,16 +20,17 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder
 {
-    public ModRecipeProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries)
+    public ModRecipeProvider(PackOutput pOutput)
     {
-        super(pOutput, pRegistries);
+        super(pOutput);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput recipeExporter)
+    protected void buildRecipes(Consumer<FinishedRecipe> recipeExporter)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.WRENCH.get(), 1)
                 .pattern(" # ")
@@ -228,7 +229,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    private void registerHalfCabinet(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerHalfCabinet(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
                 .pattern("/ ")
@@ -240,7 +241,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeExporter);
     }
 
-    private void registerHalfCabinetFlipup(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerHalfCabinetFlipup(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
                 .pattern("/")
@@ -252,7 +253,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeExporter);
     }
 
-    private void registerHalfCabinetFlipdown(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerHalfCabinetFlipdown(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
                 .pattern("#")
@@ -264,7 +265,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeExporter);
     }
 
-    private void registerHalfCupboard(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerHalfCupboard(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 3)
                 .pattern("#")
@@ -277,7 +278,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeExporter);
     }
 
-    private void registerCabinet(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerCabinet(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
                 .pattern("/#")
@@ -289,7 +290,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeExporter);
     }
 
-    private void registerCabinetFlipup(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerCabinetFlipup(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
                 .pattern("//")
@@ -301,7 +302,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeExporter);
     }
 
-    private void registerCabinetFlipdown(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerCabinetFlipdown(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
                 .pattern("##")
@@ -313,7 +314,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeExporter);
     }
 
-    private void registerCupboard(RecipeOutput recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerCupboard(Consumer<FinishedRecipe> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 4)
                 .pattern("/#")

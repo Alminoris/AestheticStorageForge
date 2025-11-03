@@ -28,7 +28,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("cabinet_"+name,
-                    () -> new CabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS), false)));
+                    () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), false)));
         }
     }};
 
@@ -37,7 +37,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("cabinet_flipup_"+name,
-                    () -> new CabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS), true)));
+                    () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), true)));
         }
     }};
 
@@ -46,7 +46,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("cabinet_flipdown_"+name,
-                    () -> new CabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS), true)));
+                    () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), true)));
         }
     }};
 
@@ -55,7 +55,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("cupboard_"+name,
-                    () -> new CupboardBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS))));
+                    () -> new CupboardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS))));
         }
     }};
 
@@ -64,7 +64,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("halfcabinet_"+name,
-                    () -> new HalfcabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS), false)));
+                    () -> new HalfcabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), false)));
         }
     }};
 
@@ -73,7 +73,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("halfcabinet_flipup_"+name,
-                    () -> new HalfcabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS), true)));
+                    () -> new HalfcabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), true)));
         }
     }};
 
@@ -82,7 +82,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("halfcabinet_flipdown_"+name,
-                    () -> new HalfcabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS), true)));
+                    () -> new HalfcabinetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), true)));
         }
     }};
 
@@ -91,7 +91,7 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("halfcupboard_"+name,
-                    () -> new HalfcupboardBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS))));
+                    () -> new HalfcupboardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS))));
         }
     }};
 

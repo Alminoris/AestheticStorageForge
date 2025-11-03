@@ -75,17 +75,17 @@ public class HalfcupboardBlockEntity extends BlockEntity implements MenuProvider
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider)
+    protected void saveAdditional(CompoundTag tag)
     {
-        super.saveAdditional(tag, provider);
-        ContainerHelper.saveAllItems(tag, inventory, provider);
+        super.saveAdditional(tag);
+        ContainerHelper.saveAllItems(tag, inventory);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider)
+    public void load(CompoundTag tag)
     {
-        super.loadAdditional(tag, provider);
-        ContainerHelper.loadAllItems(tag, inventory, provider);
+        super.load(tag);
+        ContainerHelper.loadAllItems(tag, inventory);
     }
 
     @Nullable
@@ -96,14 +96,14 @@ public class HalfcupboardBlockEntity extends BlockEntity implements MenuProvider
     }
 
     @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider provider) {
-        handleUpdateTag(pkt.getTag(), provider);
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        handleUpdateTag(pkt.getTag());
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider provider)
+    public CompoundTag getUpdateTag()
     {
-        return saveWithoutMetadata(provider);
+        return saveWithoutMetadata();
     }
 
     @Override
