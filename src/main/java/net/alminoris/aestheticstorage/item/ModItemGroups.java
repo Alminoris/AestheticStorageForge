@@ -3,6 +3,7 @@ package net.alminoris.aestheticstorage.item;
 import net.alminoris.aestheticstorage.AestheticStorage;
 import net.alminoris.aestheticstorage.block.ModBlocks;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -40,7 +41,7 @@ public class ModItemGroups
 
         @Override
         public Component getDisplayName() {
-            return Component.translatable("itemGroup." + AestheticStorage.MOD_ID + ".astrgtab");
+            return new TranslatableComponent("itemGroup." + AestheticStorage.MOD_ID + ".astrgtab");
         }
     };
 
